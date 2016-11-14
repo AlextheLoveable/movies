@@ -1,0 +1,16 @@
+{% extends "information/index.html" %}
+{% block content %}
+<h1>Welcome!</h1>
+<div class='search_movie'>
+  <form action="{% url 'movie:create' %}" method = "post">
+      {% csrf_token %}
+      <label>Movie Title</label><input type ="text" name ="movie_text">
+      <label>Cast:</label><select name = "actor_select">
+          {% for actor in actors %}
+              <option value = "{{movie.actor}}">{{movie.actor}}</option>
+          {% endfor %}
+      </select>
+      <label>Add new actor here!</label><input type ="text" name ="actor_text">
+  </form>
+</div>
+{% endblock %}
